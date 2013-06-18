@@ -15,8 +15,9 @@ module HTMLDiff
 
   class DiffBuilder
 
-    def initialize(old_version, new_version)
+    def initialize(old_version, new_version, allow_tags)
       @old_version, @new_version = old_version, new_version
+      @allow_tags = allow_tags
       @content = []
     end
 
@@ -195,6 +196,7 @@ module HTMLDiff
     end
 
     def tag?(item)
+      @allow_tags.each { |tag| return false if item.start_with? "<#{tag}" or item.start_with? "</#{tag}" }
       opening_tag?(item) or closing_tag?(item)
     end
 
@@ -312,8 +314,8 @@ module HTMLDiff
 
   end # of class Diff Builder
   
-  def diff(a, b)
-    DiffBuilder.new(a, b).build
+  def diff(a, b, allow_tags=[])
+    DiffBuilder.new(a, b, allow_tags).build
   end
 
 end
