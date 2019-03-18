@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
   s.email = %q{nathan@myobie.com}
   s.extra_rdoc_files = ["README", "LICENSE", "TODO"]
   s.files = ["LICENSE", "README", "Rakefile", "TODO", "lib/htmldiff.rb", "spec/htmldiff_spec.rb", "spec/spec_helper.rb"]
-  s.has_rdoc = true
   s.homepage = %q{http://github.com/myobie/htmldiff}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.1}
